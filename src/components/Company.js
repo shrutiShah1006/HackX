@@ -5,12 +5,42 @@ import cal from "../assets/cal.png"
 
 const Company = () => {
 
- const handleInterview=()=>{
-
+ const handleInterview=(event)=>{
+    event.preventDefault();
+    axios
+      .post("http://127.0.0.1:8000/job_handle/send-interview/", {
+        content: [
+          {
+            'Content-Type': 'application/json'
+          },
+        ],
+      }, 
+      )
+      .then((response) => {
+        console.log("Email sent successfully!", response.data);
+      })
+      .catch((error) => {
+        console.error("Error sending email:", error);
+      });
  }
 
- const handleParser=()=>{
-    
+ const handleParser=(event)=>{
+    event.preventDefault();
+    axios
+      .post("http://127.0.0.1:8000/model/skill-extracter/", {
+        content: [
+          {
+            'Content-Type': 'application/json'
+          },
+        ],
+      }, 
+      )
+      .then((response) => {
+        console.log("Email sent successfully!", response.data);
+      })
+      .catch((error) => {
+        console.error("Error sending email:", error);
+      });
  }
 
     return (
